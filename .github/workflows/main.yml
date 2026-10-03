@@ -46,7 +46,7 @@ jobs:
       - name: Uploading multiple files with exclusion
         uses: actions/upload-artifact@v7.0.0
         with:
-          name: multiple_paths
+          name: multiple_paths_with_exclusion
           path: |
             ./myartifact.txt
             artifacts/
