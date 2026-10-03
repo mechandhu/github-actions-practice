@@ -2,6 +2,10 @@ name: my-first-workflow
 #to get a trigger on every push in this repo on any branch
 on:
   push:
+    branches:
+      - dev
+      - 'feature-*'
+      - main
 
 jobs:
   job1:
@@ -29,34 +33,6 @@ jobs:
         with:
           name: single_file
           path: ./myartifact.txt
-      - name: Upload from directory
-        uses: actions/upload-artifact@v7.0.0
-        with:
-          name: directory_artifacts
-          path: artifacts/
-
-      - name: Uploading multiple files
-        uses: actions/upload-artifact@v7.0.0
-        with:
-          name: multiple_paths
-          path: |
-            ./myartifact.txt
-            artifacts/
-            
-      - name: Uploading multiple files with exclusion
-        uses: actions/upload-artifact@v7.0.0
-        with:
-          name: multiple_paths_with_exclusion
-          path: |
-            ./myartifact.txt
-            artifacts/
-            !**/hostname.txt
-
-      - name: Download artifact
-        uses: actions/download-artifact@v8
-        with:
-          name: multiple_paths_with_exclusion
-          path: ./downloads
   job2:
     name: JOB2
     needs: job1
@@ -71,25 +47,6 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: single_file
-          path: ./builds
-      - name: Checking current directory post download
-        run: |
-          pwd
-          ls -lrt
-
-  job3:
-    name: JOB3
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checking current directory
-        run: |
-          pwd
-          ls -lrt
-      - name: Download artifact directory
-        uses: actions/download-artifact@v8
-        with:
-          name: directory_artifacts
           path: ./builds
       - name: Checking current directory post download
         run: |
