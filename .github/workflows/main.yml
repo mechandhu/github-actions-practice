@@ -18,7 +18,7 @@ jobs:
         
       - name: Step -3
         run: |
-          echo `pwd' >> myartifact.txt
+          echo `pwd` >> myartifact.txt
           ls -lrt
           hostname
           
