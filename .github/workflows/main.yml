@@ -1,0 +1,29 @@
+name: my-first-workflow
+#to get a trigger on every push in this repo on any branch
+on:
+  push:
+
+jobs:
+  job1:
+    name: JOB1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step1
+        run: |
+          pwd
+          ls -lrt
+          hostname
+      - name: Step -2 Checkout
+        uses: actions/checkout@v5.0.0
+        
+      - name: Step -3
+        run: |
+          echo `pwd' >> myartifact.txt
+          ls -lrt
+          hostname
+          
+      - name: Upload a single file
+        uses: actions/upload-artifact@v7.0.0
+        with:
+          name: single_file
+          path: ./myartifact.txt
