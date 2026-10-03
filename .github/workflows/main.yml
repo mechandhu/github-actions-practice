@@ -51,3 +51,10 @@ jobs:
             ./myartifact.txt
             artifacts/
             !**/hostname.txt
+
+      - name: Download artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: multiple_paths_with_exclusion
+          path: ./downloads
+
