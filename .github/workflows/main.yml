@@ -9,7 +9,7 @@ on:
 
 jobs:
   job1:
-    name: JOB1
+    name: JOB-1
     runs-on: ubuntu-latest
     steps:
       - name: Step1
