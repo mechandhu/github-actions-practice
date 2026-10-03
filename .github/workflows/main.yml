@@ -57,4 +57,21 @@ jobs:
         with:
           name: multiple_paths_with_exclusion
           path: ./downloads
-
+  job2:
+    name: JOB2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking current directory
+        run: |
+          mkdir builds
+          pwd
+          ls -lrt
+      - name: Download single file artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: single_file
+          path: ./builds
+      - name: Checking current directory post download
+        run: |
+          pwd
+          ls -lrt
