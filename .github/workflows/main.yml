@@ -63,4 +63,4 @@ jobs:
 
       - name: Referrng Repository sectrets
         run: |
-          echo "[INFO] applictaion password is {{ secrets.APP_PASSWORD }}"
+          echo "[INFO] applictaion password is ${{ secrets.APP_PASSWORD }}"
