@@ -38,7 +38,7 @@ jobs:
           name: single_file
           path: ./myartifact.txt
   job2:
-    name: JOB2
+    name: JOB-2
     needs: job1
     runs-on: ubuntu-latest
     steps:
