@@ -75,3 +75,32 @@ jobs:
           echo "[INFO] Changes been done by ${{ github.actor }} in ${{ github.ref_name }} branch"
           echo "[INFO] Current step is running on ${{ runner.os }}"
           echo "[INFO] Current JOB ID id ${{ job.check_run_id }}"
+
+  
+  STAGING:
+    name: STAGE DEPLOYMENT
+    runs-on: ubuntu-latest
+    steps:
+      - name: Referring Environment Variables
+        run: echo "[INFO] unning Deployment on ${{ vars.HOST }} using ${{ vars.USER }}"
+
+      - name: Referring ENvironment secrets
+        run: echo "[INFO] Password for ${{ vars.USER }} is ${{ secrets.PASSWORD }}"
+
+    environment:
+      name: STAGING
+
+  PRODUCTION:
+    name: PRODUCTION DEPLOYMENT
+    runs-on: ubuntu-latest
+    steps:
+      - name: Referring Environment Variables
+        run: echo "[INFO] unning Deployment on ${{ vars.HOST }} using ${{ vars.USER }}"
+
+      - name: Referring ENvironment secrets
+        run: echo "[INFO] Password for ${{ vars.USER }} is ${{ vars.PASSWORD }}"
+
+    environment:
+      name: PRODUCTION
+      
+
