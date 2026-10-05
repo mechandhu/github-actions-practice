@@ -6,6 +6,7 @@ on:
       - main
   pull_request:
     branches: [main]
+    
 env:
   ENV_TYPE: dev
   APP_USER: cbheemin
