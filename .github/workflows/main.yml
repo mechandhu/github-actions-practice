@@ -10,6 +10,7 @@ env:
   ENV_TYPE: dev
   APP_USER: cbheemin
   APP_PORT: 80
+  NAME: CHANDRIKA
 
 jobs:
   job1:
