@@ -92,7 +92,3 @@ jobs:
     environment:
       name: STAGING
 
-    environment:
-      name: PRODUCTION
-      
-
