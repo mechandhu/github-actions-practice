@@ -3,13 +3,19 @@ name: my-first-workflow
 on:
   push:
     branches:
-      - dev
-      - 'feature-*'
       - main
+  pull_request:
+    branches: [main]
+    
+env:
+  ENV_TYPE: dev
+  APP_USER: cbheemin
+  APP_PORT: 80
+  NAME: CHANDRIKA
 
 jobs:
   job1:
-    name: JOB1
+    name: JOB-1
     runs-on: ubuntu-latest
     steps:
       - name: Step1
@@ -52,3 +58,37 @@ jobs:
         run: |
           pwd
           ls -lrt
+      - name: Referrng Environmeny Types
+        run: |
+          echo "[INFO] BUilding deploymemnt for $ENV_TYPE for use $APP_USER"
+          echo "[INFO] Once deployment application is accessible on Port $APP_PORT"
+
+      - name: Referrng Repository sectrets
+        run: |
+          echo "[INFO] applictaion password is ${{ secrets.APP_PASSWORD }}"
+
+  job3:
+    name: JOB -3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Referring context/inbuilt variables
+        run: |
+          echo "[INFO] triggerted by ${{ github.event_name }}"
+          echo "[INFO] Changes been done by ${{ github.actor }} in ${{ github.ref_name }} branch"
+          echo "[INFO] Current step is running on ${{ runner.os }}"
+          echo "[INFO] Current JOB ID id ${{ job.check_run_id }}"
+
+  
+  STAGING:
+    name: STAGE DEPLOYMENT
+    runs-on: ubuntu-latest
+    steps:
+      - name: Referring Environment Variables
+        run: echo "[INFO] unning Deployment on ${{ vars.HOST }} using ${{ vars.USER }}"
+
+      - name: Referring ENvironment secrets
+        run: echo "[INFO] Password for ${{ vars.USER }} is ${{ secrets.PASSWORD }}"
+
+    environment:
+      name: STAGING
+
