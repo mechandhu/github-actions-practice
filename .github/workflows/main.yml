@@ -12,6 +12,7 @@ env:
   APP_USER: cbheemin
   APP_PORT: 80
   NAME: CHANDRIKA
+  
 
 jobs:
   job1:
@@ -91,4 +92,15 @@ jobs:
 
     environment:
       name: STAGING
+  PRODUCTION:
+    name: PRODUCTION DEPLOYMENT
+    runs-on: ubuntu-latest
+    steps:
+      - name: Referring Environment Variables
+        run: echo "[INFO] running Deployment on ${{ vars.HOST }} using ${{ vars.USER }}"
 
+      - name: Referring ENvironment secrets
+        run: echo "[INFO] Password for ${{ vars.USER }} is ${{ vars.PASSWORD }}"
+
+    environment:
+      name: STAGING
